@@ -3,6 +3,9 @@ using EmployeeApi.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration["MongoDbSettings:ConnectionString"] =
+    Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING");
+
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 
